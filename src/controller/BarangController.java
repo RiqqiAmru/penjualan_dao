@@ -30,6 +30,7 @@ public class BarangController {
     barangView.getCmbSatuan().setSelectedIndex(0);
     barangView.gettJumlah().setText("");
     barangView.gettHarga().setText("");
+    barangView.getTabelBarang().clearSelection();
   }
 
   public void enableForm(boolean kondisi) {
@@ -38,7 +39,6 @@ public class BarangController {
     barangView.getCmbSatuan().setEnabled(kondisi);
     barangView.gettJumlah().setEnabled(kondisi);
     barangView.gettHarga().setEnabled(kondisi);
-
     barangView.getBtnSimpan().setEnabled(kondisi);
     barangView.getBtnUpdate().setEnabled(kondisi);
     barangView.getBtnHapus().setEnabled(kondisi);

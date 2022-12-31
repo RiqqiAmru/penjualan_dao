@@ -2,8 +2,10 @@ package service;
 
 import java.util.List;
 import model.Barang;
+import model.Pelanggan;
 
 public interface KasirService {
+//tabel barang
 
   Barang simpanBarang(Barang b);
 
@@ -15,4 +17,14 @@ public interface KasirService {
 
   List<Barang> getCariNama(String nama);
 
+//  tabel pelanggan
+  Pelanggan simpanPelanggan(Pelanggan p);
+
+  Pelanggan updatePelanggan(Pelanggan p);
+
+  Pelanggan deletePelanggan(Pelanggan p);
+
+  List<Pelanggan> getAllPelanggan();
+
+  List<Pelanggan> getPelangganByNama(String nama);
 }

@@ -22,8 +22,8 @@ public class BarangDAO {
   private final String queryUpdate = "UPDATE barang_dao SET nama=?, satuan=?,jumlah=?, harga=? WHERE kode=?";
   private final String queryDelete = "DELETE FROM barang_dao where kode=?";
 
-  private final String querySelect = "SELECT * FROM barang";
-  private final String cariNama = "SELECT * FROM barang WHERE nama like ?";
+  private final String querySelect = "SELECT * FROM barang_dao";
+  private final String cariNama = "SELECT * FROM barang_dao WHERE nama like ?";
 
   public void setConnection(Connection connection) throws SQLException {
     this.connection = connection;
@@ -42,7 +42,6 @@ public class BarangDAO {
     insertStatement.setString(3, barang.getSatuan());
     insertStatement.setInt(4, barang.getJumlah());
     insertStatement.setInt(5, barang.getHarga());
-    System.out.println(insertStatement.getMetaData());
     insertStatement.executeUpdate();
     return barang;
   }
