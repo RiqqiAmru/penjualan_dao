@@ -23,7 +23,6 @@ public class PelangganController {
 
   PelangganView pelangganView;
   KasirService kasirService;
-
   private List<Pelanggan> listPelanggan;
 
   public PelangganController(PelangganView p) {

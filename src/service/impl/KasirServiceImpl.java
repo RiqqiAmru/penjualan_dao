@@ -7,26 +7,40 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import config.Koneksi;
+import dao.PenjualanDAO;
+import dao.PenjualanDetailDAO;
 import java.util.ArrayList;
 import java.util.List;
 import model.Barang;
 import model.Pelanggan;
+import model.Penjualan;
+import model.PenjualanDetail;
 import service.KasirService;
 
 public class KasirServiceImpl implements KasirService {
 
   private BarangDAO barangDao;
   private PelangganDAO pelangganDao;
+  private PenjualanDAO penjualanDao;
+  private PenjualanDetailDAO penjualanDetailDao;
 
   private Connection connection;
 
   public KasirServiceImpl() {
     try {
       connection = Koneksi.getKoneksi();
+
       barangDao = new BarangDAO();
-      pelangganDao = new PelangganDAO();
       barangDao.setConnection(connection);
+
+      pelangganDao = new PelangganDAO();
       pelangganDao.setConnection(connection);
+
+      penjualanDao = new PenjualanDAO();
+      penjualanDao.setConnection(connection);
+
+      penjualanDetailDao = new PenjualanDetailDAO();
+      penjualanDetailDao.setConnection(connection);
     } catch (SQLException ex) {
       Logger.getLogger(KasirServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
     }
@@ -86,7 +100,6 @@ public class KasirServiceImpl implements KasirService {
                 null, ex1);
       }
       Logger.getLogger(KasirServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-
     }
     return b;
   }
@@ -188,5 +201,42 @@ public class KasirServiceImpl implements KasirService {
       Logger.getLogger(KasirServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
     }
     return new ArrayList<Pelanggan>();
+  }
+
+//  tabel penjualan
+  @Override
+  public Penjualan SimpanPenjualan(Penjualan p) {
+    try {
+      connection.setAutoCommit(false);
+      penjualanDao.save(p);
+      connection.commit();
+      connection.setAutoCommit(true);
+    } catch (SQLException ex) {
+      try {
+        connection.rollback();
+      } catch (SQLException ex1) {
+        Logger.getLogger(KasirServiceImpl.class.getName()).log(Level.SEVERE, null, ex1);
+      }
+      Logger.getLogger(KasirServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return p;
+  }
+
+  @Override
+  public PenjualanDetail SimpanPenjualanDetail(PenjualanDetail p) {
+    try {
+      connection.setAutoCommit(false);
+      penjualanDetailDao.save(p);
+      connection.commit();
+      connection.setAutoCommit(true);
+    } catch (SQLException ex) {
+      try {
+        connection.rollback();
+      } catch (SQLException ex1) {
+        Logger.getLogger(KasirServiceImpl.class.getName()).log(Level.SEVERE, null, ex1);
+      }
+      Logger.getLogger(KasirServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return p;
   }
 }

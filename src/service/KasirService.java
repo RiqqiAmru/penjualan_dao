@@ -3,6 +3,8 @@ package service;
 import java.util.List;
 import model.Barang;
 import model.Pelanggan;
+import model.Penjualan;
+import model.PenjualanDetail;
 
 public interface KasirService {
 //tabel barang
@@ -27,4 +29,9 @@ public interface KasirService {
   List<Pelanggan> getAllPelanggan();
 
   List<Pelanggan> getPelangganByNama(String nama);
+//  tabel penjualan/ detail
+
+  Penjualan SimpanPenjualan(Penjualan p);
+
+  PenjualanDetail SimpanPenjualanDetail(PenjualanDetail p);
 }

@@ -26,13 +26,9 @@ public class BarangView extends javax.swing.JInternalFrame {
   public BarangView() {
     initComponents();
     barangController = new BarangController(this);
-
     barangController.enableForm(false);
-
     barangController.refreshTabel();
-
     tabelBarang.getSelectionModel().addListSelectionListener(barangController.new BarangTableSelectionListener(tabelBarang));
-
   }
 
   public JButton getBtnBaru() {
