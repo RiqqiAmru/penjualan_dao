@@ -8,22 +8,22 @@ import java.util.logging.Logger;
 
 public class Koneksi {
 
-  protected static Connection konek;
+    protected static Connection konek;
 
-  public static Connection getKoneksi() {
-    if (konek == null) {
-      MysqlDataSource dataSource = new MysqlDataSource();
-      dataSource.setDatabaseName("penjualan_db");
-      dataSource.setUser("root");
-      dataSource.setPassword("");
-      dataSource.setServerName("localhost");
-      dataSource.setPort(3306);
-      try {
-        konek = dataSource.getConnection();
-      } catch (SQLException ex) {
-        Logger.getLogger(Koneksi.class.getName()).log(Level.SEVERE, null, ex);
-      }
+    public static Connection getKoneksi() {
+        if (konek == null) {
+            MysqlDataSource dataSource = new MysqlDataSource();
+            dataSource.setDatabaseName("penjualan_db");
+            dataSource.setUser("root");
+            dataSource.setPassword("");
+            dataSource.setServerName("localhost");
+            dataSource.setPort(3306);
+            try {
+                konek = dataSource.getConnection();
+            } catch (SQLException ex) {
+                Logger.getLogger(Koneksi.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return konek;
     }
-    return konek;
-  }
 }
