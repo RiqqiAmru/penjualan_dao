@@ -205,7 +205,7 @@ public class KasirServiceImpl implements KasirService {
 
 //  tabel penjualan
   @Override
-  public Penjualan SimpanPenjualan(Penjualan p) {
+  public Penjualan simpanPenjualan(Penjualan p) {
     try {
       connection.setAutoCommit(false);
       penjualanDao.save(p);
@@ -223,7 +223,7 @@ public class KasirServiceImpl implements KasirService {
   }
 
   @Override
-  public PenjualanDetail SimpanPenjualanDetail(PenjualanDetail p) {
+  public PenjualanDetail simpanPenjualanDetail(PenjualanDetail p) {
     try {
       connection.setAutoCommit(false);
       penjualanDetailDao.save(p);

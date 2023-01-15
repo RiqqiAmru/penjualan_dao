@@ -16,12 +16,15 @@ public class BarangController {
   BarangView barangView;
   KasirService kasirService;
 
-  private List<Barang> listBarangs;
+  private List<Barang> listBarangs1;
 
   // constructor
   public BarangController(BarangView barangView) {
     this.barangView = barangView;
     kasirService = new KasirServiceImpl();
+  }
+
+  BarangController() {
   }
 
   public void clearForm() {
@@ -104,14 +107,14 @@ public class BarangController {
   }
 
   public void refreshTabel() {
-    listBarangs = kasirService.getAll();
-    BarangTableModel btm = new BarangTableModel(listBarangs);
+    listBarangs1 = kasirService.getAll();
+    BarangTableModel btm = new BarangTableModel(listBarangs1);
     barangView.getTabelBarang().setModel(btm);
   }
 
   public void cariData() {
-    listBarangs = kasirService.getCariNama(barangView.gettCari().getText());
-    BarangTableModel btm = new BarangTableModel(listBarangs);
+    listBarangs1 = kasirService.getCariNama(barangView.gettCari().getText());
+    BarangTableModel btm = new BarangTableModel(listBarangs1);
     barangView.getTabelBarang().setModel(btm);
   }
 
@@ -130,7 +133,7 @@ public class BarangController {
     barangView.getBtnHapus().setEnabled(false);
   }
 
-  private class BarangTableModel extends AbstractTableModel {
+  public class BarangTableModel extends AbstractTableModel {
 
     private final List<Barang> listBarangs;
     private final String[] columnNames = {"Kode", "Nama", "Satuan", "Jumlah", "Harga"};
@@ -174,8 +177,7 @@ public class BarangController {
     }
   }
 
-  public class BarangTableSelectionListener
-          implements ListSelectionListener {
+  public class BarangTableSelectionListener implements ListSelectionListener {
 
     private JTable tabel;
 
@@ -186,7 +188,7 @@ public class BarangController {
     @Override
     public void valueChanged(ListSelectionEvent e) {
       if (tabel.getSelectedRow() >= 0) {
-        Barang b = listBarangs.get(tabel.getSelectedRow());
+        Barang b = listBarangs1.get(tabel.getSelectedRow());
         enableForm(true);
         loadModelToForm(b);
         barangView.getBtnSimpan().setEnabled(false);

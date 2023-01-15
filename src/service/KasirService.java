@@ -31,7 +31,7 @@ public interface KasirService {
   List<Pelanggan> getPelangganByNama(String nama);
 //  tabel penjualan/ detail
 
-  Penjualan SimpanPenjualan(Penjualan p);
+  Penjualan simpanPenjualan(Penjualan p);
 
-  PenjualanDetail SimpanPenjualanDetail(PenjualanDetail p);
+  PenjualanDetail simpanPenjualanDetail(PenjualanDetail p);
 }

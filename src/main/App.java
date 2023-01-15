@@ -28,10 +28,10 @@ public class App {
       java.util.logging.Logger.getLogger(MenuView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
     //</editor-fold>
-//    MenuView menu = new MenuView();
-//    menu.setVisible(true);
+    MenuView menu = new MenuView();
+    menu.setVisible(true);
 
-    KasirService k = new KasirServiceImpl();
+//    KasirService k = new KasirServiceImpl();
     ////cari semua data
     //    List<Barang> listBarang = k.getAll();
     //    System.out.println("DATA SEMUA BARANG");
@@ -63,26 +63,24 @@ public class App {
 //      System.out.println("Alamat: " + temp.getAlamat());
 //      System.out.println("==================");
 //  }
-
-    Penjualan p = new Penjualan();
-    Date date = new Date();
-
-    p.setKodePenjualan("T001");
-    p.setTanggalPenjualan(new Timestamp(date.getTime()));
-    p.setTotalTransaksi(150000.00);
-    k.SimpanPenjualan(p);
-//    simpan
-
-    List<Barang> listBarang = k.getCariNama("BERAS");
-    for (Barang b : listBarang) {
-      PenjualanDetail pd = new PenjualanDetail();
-      pd.setBarang(b);
-      pd.setHarga(b.getHarga());
-      pd.setJumlah(5);
-      pd.setSubtotal(b.getHarga() * 5);
-      pd.setPenjualan(p);
-      k.SimpanPenjualanDetail(pd);
-    }
-
+//    Penjualan p = new Penjualan();
+//    Date date = new Date();
+//
+//    p.setKodePenjualan("T001");
+//    p.setTanggalPenjualan(new Timestamp(date.getTime()));
+//    p.setTotalTransaksi(150000.00);
+//    k.simpanPenjualan(p);
+////    simpan
+//
+//    List<Barang> listBarang = k.getCariNama("BERAS");
+//    for (Barang b : listBarang) {
+//      PenjualanDetail pd = new PenjualanDetail();
+//      pd.setBarang(b);
+//      pd.setHarga(b.getHarga());
+//      pd.setJumlah(5);
+//      pd.setSubtotal(b.getHarga() * 5);
+//      pd.setPenjualan(p);
+//      k.simpanPenjualanDetail(pd);
+//    }
   }
 }

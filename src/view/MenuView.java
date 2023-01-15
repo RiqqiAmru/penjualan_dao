@@ -36,7 +36,9 @@ public class MenuView extends javax.swing.JFrame {
     jMenuBar1 = new javax.swing.JMenuBar();
     jMenu1 = new javax.swing.JMenu();
     itemBarang = new javax.swing.JMenuItem();
-    jMenuItem1 = new javax.swing.JMenuItem();
+    itemPelanggan = new javax.swing.JMenuItem();
+    jMenu2 = new javax.swing.JMenu();
+    itemTransaksi = new javax.swing.JMenuItem();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,15 +63,27 @@ public class MenuView extends javax.swing.JFrame {
     });
     jMenu1.add(itemBarang);
 
-    jMenuItem1.setText("Pelanggan");
-    jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+    itemPelanggan.setText("Pelanggan");
+    itemPelanggan.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        jMenuItem1ActionPerformed(evt);
+        itemPelangganActionPerformed(evt);
       }
     });
-    jMenu1.add(jMenuItem1);
+    jMenu1.add(itemPelanggan);
 
     jMenuBar1.add(jMenu1);
+
+    jMenu2.setText("Transaksi");
+
+    itemTransaksi.setText("Penjualan");
+    itemTransaksi.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        itemTransaksiActionPerformed(evt);
+      }
+    });
+    jMenu2.add(itemTransaksi);
+
+    jMenuBar1.add(jMenu2);
 
     setJMenuBar(jMenuBar1);
 
@@ -99,7 +113,7 @@ public class MenuView extends javax.swing.JFrame {
     }
   }//GEN-LAST:event_itemBarangActionPerformed
 
-  private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+  private void itemPelangganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemPelangganActionPerformed
     PelangganView pelanggan = new PelangganView();
     pelanggan.setVisible(true);
     desktop.add(pelanggan);
@@ -109,7 +123,19 @@ public class MenuView extends javax.swing.JFrame {
       Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, e);
       JOptionPane.showMessageDialog(this, e.getMessage());
     }
-  }//GEN-LAST:event_jMenuItem1ActionPerformed
+  }//GEN-LAST:event_itemPelangganActionPerformed
+
+  private void itemTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemTransaksiActionPerformed
+    PenjualanView penjualan = new PenjualanView();
+    penjualan.setVisible(true);
+    desktop.add(penjualan);
+    try {
+      penjualan.setSelected(true);
+    } catch (Exception e) {
+      Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, e);
+      JOptionPane.showMessageDialog(this, e.getMessage());
+    }
+  }//GEN-LAST:event_itemTransaksiActionPerformed
 
   /**
    * @param args the command line arguments
@@ -142,8 +168,10 @@ public class MenuView extends javax.swing.JFrame {
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JDesktopPane desktop;
   private javax.swing.JMenuItem itemBarang;
+  private javax.swing.JMenuItem itemPelanggan;
+  private javax.swing.JMenuItem itemTransaksi;
   private javax.swing.JMenu jMenu1;
+  private javax.swing.JMenu jMenu2;
   private javax.swing.JMenuBar jMenuBar1;
-  private javax.swing.JMenuItem jMenuItem1;
   // End of variables declaration//GEN-END:variables
 }
