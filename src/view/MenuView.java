@@ -36,6 +36,7 @@ public class MenuView extends javax.swing.JFrame {
     jMenuBar1 = new javax.swing.JMenuBar();
     jMenu1 = new javax.swing.JMenu();
     itemBarang = new javax.swing.JMenuItem();
+    jMenuItem1 = new javax.swing.JMenuItem();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,6 +61,14 @@ public class MenuView extends javax.swing.JFrame {
     });
     jMenu1.add(itemBarang);
 
+    jMenuItem1.setText("Pelanggan");
+    jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem1ActionPerformed(evt);
+      }
+    });
+    jMenu1.add(jMenuItem1);
+
     jMenuBar1.add(jMenu1);
 
     setJMenuBar(jMenuBar1);
@@ -79,6 +88,7 @@ public class MenuView extends javax.swing.JFrame {
   }// </editor-fold>//GEN-END:initComponents
 
   private void itemBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBarangActionPerformed
+<<<<<<< HEAD
         BarangView barang = new BarangView();
         barang.setVisible(true);
         desktop.add(barang);
@@ -124,11 +134,64 @@ public class MenuView extends javax.swing.JFrame {
             }
         });
     }
+=======
+    BarangView barang = new BarangView();
+    barang.setVisible(true);
+    desktop.add(barang);
+    try {
+      barang.setSelected(true);
+    } catch (Exception e) {
+      Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, e);
+      JOptionPane.showMessageDialog(this, e.getMessage());
+    }
+  }//GEN-LAST:event_itemBarangActionPerformed
+
+  private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    PelangganView pelanggan = new PelangganView();
+    pelanggan.setVisible(true);
+    desktop.add(pelanggan);
+    try {
+      pelanggan.setSelected(true);
+    } catch (Exception e) {
+      Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, e);
+      JOptionPane.showMessageDialog(this, e.getMessage());
+    }
+  }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+  /**
+   * @param args the command line arguments
+   */
+  public static void main(String args[]) {
+    /* Set the Nimbus look and feel */
+    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+     */
+    try {
+      for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+        if ("Windows".equals(info.getName())) {
+          javax.swing.UIManager.setLookAndFeel(info.getClassName());
+          break;
+        }
+      }
+    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+      java.util.logging.Logger.getLogger(MenuView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    }
+    //</editor-fold>
+    /* Create and display the form */
+    java.awt.EventQueue.invokeLater(new Runnable() {
+      public void run() {
+        new MenuView().setVisible(true);
+      }
+    });
+  }
+>>>>>>> 3a9a71976a5c02969051fc0f6cdc4b9e9b1c58a8
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JDesktopPane desktop;
   private javax.swing.JMenuItem itemBarang;
   private javax.swing.JMenu jMenu1;
   private javax.swing.JMenuBar jMenuBar1;
+  private javax.swing.JMenuItem jMenuItem1;
   // End of variables declaration//GEN-END:variables
 }

@@ -18,10 +18,55 @@ public class BarangController {
     
     private List<Barang> listBarangs;
 
+<<<<<<< HEAD
     // constructor
     public BarangController(BarangView barangView) {
         this.barangView = barangView;
         kasirService = new KasirServiceImpl();
+=======
+  BarangView barangView;
+  KasirService kasirService;
+
+  private List<Barang> listBarangs;
+
+  // constructor
+  public BarangController(BarangView barangView) {
+    this.barangView = barangView;
+    kasirService = new KasirServiceImpl();
+  }
+
+  public void clearForm() {
+    barangView.gettKode().setText("");
+    barangView.gettNama().setText("");
+    barangView.getCmbSatuan().setSelectedIndex(0);
+    barangView.gettJumlah().setText("");
+    barangView.gettHarga().setText("");
+    barangView.getTabelBarang().clearSelection();
+  }
+
+  public void enableForm(boolean kondisi) {
+    barangView.gettKode().setEnabled(kondisi);
+    barangView.gettNama().setEnabled(kondisi);
+    barangView.getCmbSatuan().setEnabled(kondisi);
+    barangView.gettJumlah().setEnabled(kondisi);
+    barangView.gettHarga().setEnabled(kondisi);
+    barangView.getBtnSimpan().setEnabled(kondisi);
+    barangView.getBtnUpdate().setEnabled(kondisi);
+    barangView.getBtnHapus().setEnabled(kondisi);
+  }
+
+  private boolean validasiForm() {
+    if (barangView.gettKode().getText().length() > 0
+            && barangView.gettNama().getText().length() > 0
+            && barangView.getCmbSatuan().getSelectedIndex() != 0
+            && barangView.gettJumlah().getText().length() > 0
+            && barangView.gettHarga().getText().length() > 0) {
+      return true;
+    } else {
+      JOptionPane.showMessageDialog(barangView, "Input tidak boleh kosong",
+              "ERROR", JOptionPane.ERROR_MESSAGE);
+      return false;
+>>>>>>> 3a9a71976a5c02969051fc0f6cdc4b9e9b1c58a8
     }
     
     public void editableKode(boolean bool) {
