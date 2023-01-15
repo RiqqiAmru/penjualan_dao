@@ -19,6 +19,19 @@ import service.KasirService;
 
 public class KasirServiceImpl implements KasirService {
 
+<<<<<<< HEAD
+    private BarangDAO barangDao;
+    private Connection connection;
+
+    public KasirServiceImpl() {
+        try {
+            connection = Koneksi.getKoneksi();
+            barangDao = new BarangDAO();
+            barangDao.setConnection(connection);
+        } catch (SQLException ex) {
+            Logger.getLogger(KasirServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+=======
   private BarangDAO barangDao;
   private PelangganDAO pelangganDao;
   private PenjualanDAO penjualanDao;
@@ -43,9 +56,27 @@ public class KasirServiceImpl implements KasirService {
       penjualanDetailDao.setConnection(connection);
     } catch (SQLException ex) {
       Logger.getLogger(KasirServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+>>>>>>> 3a9a71976a5c02969051fc0f6cdc4b9e9b1c58a8
     }
-  }
 
+<<<<<<< HEAD
+    @Override
+    public Barang simpanBarang(Barang b) {
+        try {
+            connection.setAutoCommit(false);
+            barangDao.save(b);
+            connection.commit();
+            connection.setAutoCommit(true);
+        } catch (SQLException ex) {
+            try {
+                connection.rollback();
+            } catch (SQLException ex1) {
+                Logger.getLogger(KasirServiceImpl.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+            Logger.getLogger(KasirServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return b;
+=======
 //  tabel barang
   @Override
   public Barang simpanBarang(Barang b) {
@@ -61,10 +92,27 @@ public class KasirServiceImpl implements KasirService {
         Logger.getLogger(KasirServiceImpl.class.getName()).log(Level.SEVERE, null, ex1);
       }
       Logger.getLogger(KasirServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+>>>>>>> 3a9a71976a5c02969051fc0f6cdc4b9e9b1c58a8
     }
-    return b;
-  }
 
+<<<<<<< HEAD
+    @Override
+    public Barang updateBarang(Barang b) {
+        try {
+            connection.setAutoCommit(false);
+            barangDao.update(b);
+            connection.commit();
+            connection.setAutoCommit(true);
+        } catch (SQLException ex) {
+            try {
+                connection.rollback();
+            } catch (SQLException ex1) {
+                Logger.getLogger(KasirServiceImpl.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+            Logger.getLogger(KasirServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return b;
+=======
   @Override
   public Barang updateBarang(Barang b) {
     try {
@@ -81,10 +129,28 @@ public class KasirServiceImpl implements KasirService {
       }
       Logger.getLogger(KasirServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
 
+>>>>>>> 3a9a71976a5c02969051fc0f6cdc4b9e9b1c58a8
     }
-    return b;
-  }
 
+<<<<<<< HEAD
+    @Override
+    public Barang deleteBarang(Barang b) {
+        try {
+            connection.setAutoCommit(false);
+            barangDao.delete(b);
+            connection.commit();
+            connection.setAutoCommit(true);
+        } catch (SQLException ex) {
+            try {
+                connection.rollback();
+            } catch (SQLException ex1) {
+                Logger.getLogger(KasirServiceImpl.class.getName()).log(Level.SEVERE,
+                        null, ex1);
+            }
+            Logger.getLogger(KasirServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return b;
+=======
   @Override
   public Barang deleteBarang(Barang b) {
     try {
@@ -100,17 +166,30 @@ public class KasirServiceImpl implements KasirService {
                 null, ex1);
       }
       Logger.getLogger(KasirServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+>>>>>>> 3a9a71976a5c02969051fc0f6cdc4b9e9b1c58a8
     }
-    return b;
-  }
 
-  @Override
-  public List<Barang> getAll() {
-    try {
-      return barangDao.getAll();
-    } catch (Exception ex) {
-      Logger.getLogger(KasirServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+    @Override
+    public List<Barang> getAll() {
+        try {
+            return barangDao.getAll();
+        } catch (Exception ex) {
+            Logger.getLogger(KasirServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return new ArrayList<Barang>();
     }
+<<<<<<< HEAD
+
+    @Override
+    public List<Barang> getCariNama(String nama) {
+        try {
+            return barangDao.getByNama(nama);
+        } catch (SQLException ex) {
+            Logger.getLogger(KasirServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+=======
     return new ArrayList<Barang>();
   }
 
@@ -239,4 +318,5 @@ public class KasirServiceImpl implements KasirService {
     }
     return p;
   }
+>>>>>>> 3a9a71976a5c02969051fc0f6cdc4b9e9b1c58a8
 }

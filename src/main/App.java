@@ -12,6 +12,15 @@ import view.MenuView;
 
 public class App {
 
+<<<<<<< HEAD
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        MenuView menu = new MenuView();
+        menu.setVisible(true);
+    }
+=======
   /**
    * @param args the command line arguments
    */
@@ -83,4 +92,5 @@ public class App {
 //      k.simpanPenjualanDetail(pd);
 //    }
   }
+>>>>>>> 3a9a71976a5c02969051fc0f6cdc4b9e9b1c58a8
 }
