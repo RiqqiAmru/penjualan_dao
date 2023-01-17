@@ -16,6 +16,16 @@ public class Penjualan {
    private String kodePenjualan;
    private Timestamp tanggalPenjualan;
    private Double totalTransaksi;
+   private String kodePelanggan;
+
+   public String getKodePelanggan() {
+      return kodePelanggan;
+   }
+
+   public void setKodePelanggan(String kodePelanggan) {
+      this.kodePelanggan = kodePelanggan;
+   }
+
    private List<PenjualanDetail> penjualanDetails;
 
    public String getKodePenjualan() {

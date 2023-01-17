@@ -15,6 +15,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.AbstractTableModel;
 import model.Barang;
+import model.Pelanggan;
 import model.Penjualan;
 import model.PenjualanDetail;
 import service.KasirService;
@@ -126,9 +127,13 @@ public class PenjualanController {
       penjualan.setKodePenjualan(penjualanView.gettKode().getText());
       Date date = new Date();
       penjualan.setTanggalPenjualan(new Timestamp(date.getTime()));
+      penjualan.setTotalTransaksi(Double.parseDouble(penjualanView.gettRupiah().getText()));
+//      ambil cb yang terpilih dan cari kode pelanggan di db
+      List<Pelanggan> pelangganByNama = kasirService.getPelangganByNama(penjualanView.getCbPelanggan().getSelectedItem().toString());
+      for (Pelanggan p : pelangganByNama) {
+         penjualan.setKodePelanggan(p.getKode());
+      }
 
-      penjualan.setTotalTransaksi(Double.parseDouble(penjualanView.gettRupiah().getText()
-      ));
       kasirService.simpanPenjualan(penjualan);
       for (PenjualanDetail penjualanDetail : penjualanDetails) {
          PenjualanDetail pd = new PenjualanDetail();
@@ -251,6 +256,14 @@ public class PenjualanController {
          if (tabel.getSelectedRow() >= 0) {
             barang = listBarangs.get(tabel.getSelectedRow());
          }
+      }
+   }
+
+   public void ambilPelanggan() {
+//      ambil data dari db dan masukkan ke dalam combo box
+      List<Pelanggan> allPelanggan = kasirService.getAllPelanggan();
+      for (Pelanggan p : allPelanggan) {
+         penjualanView.getCbPelanggan().addItem(p.getNama());
       }
    }
 }
